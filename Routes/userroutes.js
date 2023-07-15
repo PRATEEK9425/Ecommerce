@@ -2,7 +2,7 @@ const express = require("express")
 
 const jwt = require("jsonwebtoken")
 const bcrypt = require('bcrypt');
-const { userModel } = require("../Models/Usermodels");
+const { usermodel } = require("../Models/usermodels");
 const userRouter = express.Router()
 
 userRouter.post("/register",async(req,res)=>{
@@ -16,7 +16,7 @@ userRouter.post("/register",async(req,res)=>{
                 res.send("Err while Hshing process")
 
             }else{
-                const user = new userModel({name,email,password:Secure_password,age})
+                const user = new usermodel({name,email,password:Secure_password,age})
                 await user.save()
                 res.send({"User Registered":"successfully"})
             }
@@ -35,7 +35,7 @@ userRouter.post("/login",async(req,res)=>{
     const {email,password} =req.body
     
     try{
-        const user = await userModel.find({email})
+        const user = await usermodel.find({email})
 if(user.length>0){
     bcrypt.compare(password, user[0].password, (err, result)=> {
         if(result){

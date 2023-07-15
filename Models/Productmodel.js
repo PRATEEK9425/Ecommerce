@@ -8,8 +8,8 @@ const productSchema = mongoose.Schema({
    Available_stock:Number
 })
 
-const productModel = mongoose.model("Productsdata",productSchema)
+const productmodel = mongoose.model("Productsdata",productSchema)
 
 module.exports={
-    productModel
+    productmodel
 }
